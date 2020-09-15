@@ -8,7 +8,6 @@ import com.ibm.library.model.BookData;
 
 import org.springframework.web.client.RestTemplate;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -33,5 +32,15 @@ public class BookInventoryEndpointImpl implements BookInventoryEndpoint {
 			books = Arrays.asList(bookDataArray); 
 		}
 		return books;
+	}
+
+	@Override
+	public BookData getBook(String isbn) {
+
+		String bookInventoryRESTRequestURL = "http://" + bookInventoryEndpoint + "/bookinventory/book/" + isbn;
+		
+		BookData book = this.restTemplate.getForObject(bookInventoryRESTRequestURL, BookData.class);
+		
+		return book;
 	}
 }

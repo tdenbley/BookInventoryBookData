@@ -33,4 +33,16 @@ public class LibraryServiceImpl implements LibraryService {
 		logger.info("Leaving LibraryServiceImpl.getBooks()");
 		return books;
 	}
+
+	@Override
+	public BookData getBook(String isbn) {
+
+		logger.info("Entered LibraryServiceImpl.getBook(). isbn=" + isbn);
+		
+		BookData book = this.bookInventoryEndpoint.getBook(isbn);
+		
+		logger.info("Leaving LibraryServiceImpl.getBook(). isbn=" + isbn);
+		
+		return book;
+	}
 }
