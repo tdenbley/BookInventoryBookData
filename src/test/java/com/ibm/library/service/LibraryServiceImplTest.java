@@ -51,9 +51,9 @@ class LibraryServiceImplTest {
 		verify(bookInventoryEndpoint).getBook(isbn);
 	}
 	
-	@Test
+/*	@Test
 	void testGetBooks() {
 		fail("Not yet implemented");
 	}
-
+*/
 }

@@ -54,4 +54,11 @@ public class LibraryController
     	
 		return responseEntity;
 	}
+    
+       @RequestMapping(value = "/hello")
+       public ResponseEntity<?> hello() {
+          ResponseEntity<String> responseEntity = new ResponseEntity<String>("Hello", HttpStatus.OK);
+          return responseEntity;
+       }
+
 }

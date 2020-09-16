@@ -28,7 +28,9 @@ public class LibraryServiceImpl implements LibraryService {
 		
 		logger.info("Entered LibraryServiceImpl.getBook().  isbn=" + isbn);
 
-		BookData book = this.bookInventoryEndpoint.getBook(isbn);
+		//BookData book = this.bookInventoryEndpoint.getBook(isbn);
+	      BookData book = new BookData("FICTION", isbn, "Some Book", "Some Author");
+
 		
 		logger.info("Leaving LibraryServiceImpl.getBook().  isbn=" + isbn);
 		return book;
@@ -44,4 +46,6 @@ public class LibraryServiceImpl implements LibraryService {
 		logger.info("Leaving LibraryServiceImpl.getBooks()");
 		return books;
 	}
+	
+	
 }
