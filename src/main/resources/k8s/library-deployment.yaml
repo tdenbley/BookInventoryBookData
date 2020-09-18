@@ -1,0 +1,43 @@
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: libraryservicedeployment
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels: 
+      app: libraryservice
+  strategy: 
+    type: Recreate
+  template: 
+    metadata: 
+      labels: 
+        app: libraryservice
+    spec: 
+      containers: 
+        - 
+          env: 
+            - 
+              name: bookinventory.endpoint
+              valueFrom: 
+                configMapKeyRef: 
+                  key: bookinventory.endpoint
+                  name: librarycm
+          image: "us.icr.io/tdenbley/libraryservice:1.0"
+          imagePullPolicy: Always
+          livenessProbe: 
+            httpGet: 
+              path: /actuator/health
+              port: 9003
+            timeoutSeconds: 4
+          name: libraryservice
+          ports: 
+            - 
+              containerPort: 9003
+          readinessProbe: 
+            httpGet: 
+              path: /actuator/health
+              port: 9003
+            timeoutSeconds: 4
+      restartPolicy: Always
