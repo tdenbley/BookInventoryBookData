@@ -10,14 +10,4 @@ Scenario Outline: Get an existing Book from the Library
 
   Examples:
     | isbn  |
-    | 12345      | 
-    | 875        |
-
-Scenario Outline: Try to get a Book that does not exist in the Library
-   Given Library and BookInventory services are running and BookInventory's db does not have isbn, <isbn>, in it
-   When The Library Microservice receives a request for isbn, <isbn>
-   Then The Library microservice should return no data for isbn, <isbn>
-
-  Examples:
-    | isbn  |
-    | 9999  | 
+    | 12345 | 
